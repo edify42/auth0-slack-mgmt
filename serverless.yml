@@ -1,0 +1,22 @@
+service:
+  name: auth0-slack-management
+
+plugins:
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  timeout: 15
+
+functions:
+  slash-request:
+    handler: lib/slash-request/handler.handler
+    events:
+      - http:
+          private: true
+          path: graphql
+          method: post
+      - http:
+          private: true
+          path: graphql
+          method: get
